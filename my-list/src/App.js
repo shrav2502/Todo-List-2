@@ -38,19 +38,17 @@ class App extends React.Component {
     });
   }
 
-  addItem(value) {
-    const task = this.state.todos;
-    const add = {
-      id: value,
+ addItem(value) {
+    const tasks = {
+      id: this.state.todos.length + 1,
       task: value,
       completed: false,
     };
-    task.push(add);
-    this.setState({
-      todos: task,
-    });
+    this.setState((prevState) => ({
+      todos: [...prevState.todos, tasks],
+    }));
   }
-
+  
   render() {
     const updatedItem = this.state.todos.map((item) => {
       return (
